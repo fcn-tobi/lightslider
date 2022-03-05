@@ -20,6 +20,7 @@
         controls: true,
         prevHtml: '',
         nextHtml: '',
+        centerSlide: false,
         rtl: false,
         adaptiveHeight: false,
         vertical: false,
@@ -607,6 +608,14 @@
                         _sV += (parseInt($children.eq(i).width()) + settings.slideMargin);
                     }
                 }
+                
+                if (settings.centerSlide) {
+                    var extraWidth = elSize - $children.eq(scene).width();
+                    if (extraWidth > 1) {
+                        _sV -= Math.round(extraWidth / 2);
+                    }
+                }
+                
                 return _sV;
             },
             slideThumb: function () {
